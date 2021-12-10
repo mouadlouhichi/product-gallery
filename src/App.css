@@ -1,38 +1,194 @@
+@font-face {
+  font-family: 'Lato';
+  src: url('./assets//fonts/Lato-Regular.ttf'); /* IE9 Compat Modes */
+}
+
 .App {
-  text-align: center;
+  font-family: 'Lato', sans-serif;
+  cursor: default;
+  height: 100vh;
+  grid-template-columns: 1.1fr 4fr;
+  grid-template-rows: 1fr 10fr;
+  display: grid;
+  grid-template-areas:
+    'leftBar header '
+    'leftBar main '
+    'leftBar main';
+  grid-gap: 1rem;
+  background-color: #fafcfe;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+ul,
+li {
+  margin: 2rem 0;
+  padding: 0;
+  list-style: none;
+  text-transform: capitalize;
+  color: #47423d;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.leftBar {
+  padding-top: 2rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
   display: flex;
+  grid-area: leftBar;
+  background-color: #f3f9fe;
   flex-direction: column;
-  align-items: center;
+  text-align: left;
+}
+.leftBar h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: #5aabf3;
+}
+
+.leftBar .categories {
+  margin-top: 4rem;
+  color: #47423d;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.leftBar .categories li:hover {
+  cursor: pointer;
+}
+.leftBar .categories li.active {
+  font-weight: 700;
+}
+.header {
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 2.5rem 1rem;
+}
+
+.header .searchInput {
+  display: flex;
+}
+.header .searchIcon {
+  display: grid;
+  cursor: pointer;
+  place-items: center;
+}
+.header .searchIcon svg {
+  width: 1.8rem;
+  height: 1.8rem;
+  transform: translateX(-2.2rem);
+  fill: #747476;
+}
+
+.header input {
+  padding: 0.6rem 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px #b3b3b3 solid;
+  outline: none;
+  background: transparent;
+  width: 18rem;
+}
+.cart {
+  position: relative;
+  cursor: pointer;
+}
+.cart svg {
+  fill: #5aabf3;
+}
+.cart span {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #47423d;
+  color: #fafcfe;
+  padding: 1px;
+  border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+  font-size: 0.8rem;
+  text-align: center;
+  transform: translate(0.6rem, 0);
+  font-weight: 600;
+}
+.main {
+  grid-area: main;
+  padding-top: 2rem;
+  display: flex;
+  gap: 2rem 1rem;
+  overflow: auto;
+  flex-wrap: wrap;
+  align-items: flex-start;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding-bottom: 5rem;
+}
+.main .product-card {
+  position: relative;
+  width: calc(25% - 2rem);
+  height: 29rem;
+  background: #ffffff;
+
+  border-radius: 10px;
+  box-shadow: #0e4b821a 0 0.8rem 1.5rem 0;
+  transition: all 0.2s ease-in;
+}
+.main .product-card:hover {
+  transform: scale(1.05);
+  /*   margin-left: 0.25rem;
+  margin-right: 0.25rem; */
+}
+.main .product-card .product-cover {
+  width: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 19rem;
+  border-top-left-radius: 0.6rem;
+  border-top-right-radius: 0.6rem;
+  cursor: pointer;
+
+}
+.main .product-card .product-details {
+  transform: translateY(-1.9rem);
+  padding: 0 1rem;
 }
 
-.App-link {
-  color: #61dafb;
+.main .product-card .product-price {
+  background-color: #5aabf3;
+  width: fit-content;
+  color: #fafcfe;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+}
+.main .product-card .product-name {
+  color: #333333;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0 0 0.5rem;
+  word-spacing: 2px;
+}
+.main .product-card .product-description {
+  color: #adb6c2;
+  margin: 0;
+  padding: 0;
+}
+.main .product-card .product-add-to-cart {
+  background: transparent;
+  border: none;
+  color: #5aabf3;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  line-height: 2;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main .product-card .product-footer {
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  justify-content: space-between;
+  position: absolute;
+  width: calc(100% - 2rem);
+  bottom: 0.8rem;
+}
+.main .product-card .product-footer svg {
+  fill: #5aabf3;
+  cursor: pointer;
 }
