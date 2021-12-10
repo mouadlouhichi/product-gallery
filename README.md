@@ -1,4 +1,4 @@
-# Simple Gallery
+# Product Gallery
 
 Version 1.0.1, built with [ReactJS](https://www.reactjs.org) 
 ## Usage Guide
