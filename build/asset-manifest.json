@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/product-gallery%20/static/css/main.959c52ed.chunk.css",
+    "main.js": "/product-gallery%20/static/js/main.d599cf65.chunk.js",
+    "main.js.map": "/product-gallery%20/static/js/main.d599cf65.chunk.js.map",
+    "runtime-main.js": "/product-gallery%20/static/js/runtime-main.6fed09f4.js",
+    "runtime-main.js.map": "/product-gallery%20/static/js/runtime-main.6fed09f4.js.map",
+    "static/js/2.e84e0906.chunk.js": "/product-gallery%20/static/js/2.e84e0906.chunk.js",
+    "static/js/2.e84e0906.chunk.js.map": "/product-gallery%20/static/js/2.e84e0906.chunk.js.map",
+    "static/js/3.9eec9066.chunk.js": "/product-gallery%20/static/js/3.9eec9066.chunk.js",
+    "static/js/3.9eec9066.chunk.js.map": "/product-gallery%20/static/js/3.9eec9066.chunk.js.map",
+    "index.html": "/product-gallery%20/index.html",
+    "static/css/main.959c52ed.chunk.css.map": "/product-gallery%20/static/css/main.959c52ed.chunk.css.map",
+    "static/js/2.e84e0906.chunk.js.LICENSE.txt": "/product-gallery%20/static/js/2.e84e0906.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/product-gallery%20/static/media/Lato-Regular.9919edff.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6fed09f4.js",
+    "static/js/2.e84e0906.chunk.js",
+    "static/css/main.959c52ed.chunk.css",
+    "static/js/main.d599cf65.chunk.js"
+  ]
+}

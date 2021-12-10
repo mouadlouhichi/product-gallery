@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import SearchIcon from './assets/icons/search';
 import CartIcon from './assets/icons/cart';
-import ViewIcon from './assets/icons/view';
 import DATA from './data/DUMMY.data';
-import getCategories from './utils/categories';
+import utils from './utils/utils';
 
 function App() {
-  const HOME = 'Home';
+  const HOME = utils.HOME;
+  const categories = utils.getCategories(DATA);
 
-  const categories = getCategories(DATA);
   let firstActive =
     typeof window !== 'undefined'
       ? decodeURIComponent(window.location.hash).substr(1)
@@ -17,6 +16,7 @@ function App() {
   if (firstActive === '' || firstActive === '#') {
     firstActive = HOME;
   }
+
   const [activeCategory, setActiveCategory] = useState(firstActive);
   const [searchInput, setSearchInput] = useState('');
   const [availableProducts, setAvailableProducts] = useState(DATA);
@@ -27,16 +27,13 @@ function App() {
   };
 
   useEffect(() => {
-    let products =
-      searchInput.length > 0
-        ? availableProducts.filter((product) =>
-            product.productName
-              .toLocaleLowerCase()
-              .includes(searchInput.toLocaleLowerCase())
-          )
-        : DATA;
-    setAvailableProducts(products);
-    console.log(searchInput);
+    let searchedProducts = utils.getSearchedProducts(
+      searchInput,
+      availableProducts,
+      DATA
+    );
+    console.log(searchedProducts);
+    setAvailableProducts(searchedProducts);
 
     if (activeCategory !== HOME) {
       let filteredProducts = DATA.filter((product) =>
@@ -44,17 +41,18 @@ function App() {
       );
       setAvailableProducts(filteredProducts);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchInput, activeCategory]);
 
   return (
-    <div className='App'>
-      <div className='leftBar'>
-        <h1>Simple Gallery</h1>
+    <div className='app'>
+      <div className='left-bar'>
+        <h1>Product Gallery</h1>
         <div className='categories'>
           <ul>
             {categories.map((category, idx) => (
               <li
-                className={category === activeCategory && 'active'}
+                className={category === activeCategory ? 'active' : ''}
                 key={idx}
                 onClick={() => handleFilter(category)}
               >
@@ -65,7 +63,7 @@ function App() {
         </div>
       </div>
       <div className='header'>
-        <div className='searchInput'>
+        <div className='search-input'>
           <input
             type='text'
             value={searchInput}
@@ -73,7 +71,7 @@ function App() {
             placeholder='Search'
           />
 
-          <div className='searchIcon'>
+          <div className='search-icon'>
             <SearchIcon />
           </div>
         </div>
@@ -85,7 +83,7 @@ function App() {
       </div>
       <div className='main'>
         {availableProducts.map((item) => (
-          <div key={item.id} className='product-card'>
+          <div key={item.productId} className='product-card'>
             <div
               className='product-cover'
               style={{
