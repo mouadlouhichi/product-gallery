@@ -2,7 +2,7 @@ import React from 'react';
 
 const ViewIcon = () => (
   <svg
-    enable-background='new 0 0 32 32'
+    enableBackground='new 0 0 32 32'
     height='32px'
     id='Layer_1'
     version='1.1'
